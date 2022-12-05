@@ -20,15 +20,13 @@ The beads and barcodes is critical for researchers to know the origin of differe
 
 ### Seurat
 After the quality check, we first preprocess the data, then perform differential expression analysis and dimension reduction. 
-
-```mermaid
-graph LR
-A[Quality Check] -->B(Preprocess Data)
-    B --> C{Multiple Analysis Methods}
-    C -->|1| D[Differential Expression]
-    C -->|2| E[Dimension Reduction]
-​```
-   
+```
+Dev_NPC[["percent.mt"]] <- PercentageFeatureSet(Dev_NPC, pattern = "^mt-")
+Dev_NPC <- NormalizeData(object = Dev_NPC, normalization.method = "LogNormalize", scale.factor = 10000)
+Dev_NPC <- FindVariableFeatures(Dev_NPC, selection.method = "vst", nfeatures = 2000)
+Dev_NPC <- ScaleData(Dev_NPC, vars.to.regress = c("nCount_RNA","percent.mt"), features = row.names(Dev_NPC))
+Dev_NPC <- RunPCA(Dev_NPC, features = VariableFeatures(object = Dev_NPC), verbose = FALSE, npcs = 100) 
+```
 For preprocessing, The input count matrix has large variations between rows and columns so we use log normalization. Then, we use Find Variable Features to find the 2000 best genes for next steps. The better genes have larger variability in the count matrix, so we have better PCA results. By scaling data, we perform feature-level scaling. Each feature will have a mean of 0 and scaled by its standard deviation.  
 (NEXT PAGE)
 Then, we perform dimension reduction, which is PCA. With PCA we find independent and separated features and prepare for clustering. Seurat clustering uses FindNeighbors and Find Clusters methods with an SNN algorithm and Louvain method. The clusters are automatically generated.
