@@ -59,7 +59,7 @@ Dev_Hep <- RunUMAP(Dev_Hep, dims = 1:Dims)
 
 To visualize the dimension reduction result and clusters, we mainly have two methods: tSNE or UMAP to better separate and visualize the clusters.. They both reduce higher dimensional data to two dimensions and then we plot clusters with the data. UMAP is the newer and more comprehensive tool, which is better based on mathematical induction than tSNE. When we compare UMAP and tSNE plots, UMAP uses cross-entropy loss as loss function and results in a more authentic general structure. It is also much faster than tSNE, especially on large data sets.
 
-![tSNE](tSNE clusters.jpg "A tSNE Plot of 10 Clusters")
+![tSNE](tSNE_clusters.jpg "A tSNE Plot of 10 Clusters")
 
 (NEXT PAGE)
 Another section is differential expression. To find DE genes, we have a convenient method: Find all markers. It calculates the DE genes in each cluster and creates a sheet like the DESeq2 result.
