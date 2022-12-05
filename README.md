@@ -72,12 +72,15 @@ We can use more ways to visualize the dimension reduction analysis. For example,
 ![Ridge](Sdhb_Ridge.jpg "RidgePlot of Expression Levels in different days")
 ![Vln](Sdhb_violin.jpg "ViolinPlot of Expression Levels in different days")
 
-Another section is differential expression. To find DE genes, we have a convenient method: Find all markers. It calculates the DE genes in each cluster and creates a sheet like the DESeq2 result.
-(NEXT PAGE)
-After these, we can use various plots to visualize the analysis.
-We use dimplot to draw the clusters we generated and FeaturePlot to use markers to identify each cluster.
-We also have like violin plots to draw the changes of expression with time. RidgePlot is an alternative.
-(Next Page)
+RidgePlots and ViolinPlots are used in showing the expression level differences between days or features.
+
+#### Differential Expression Analysis
+
+Another section of Single-cell Sequencing analysis is differential expression (just like bulk RNA sequencing). To find Differentially Expressed genes, we have a convenient method: ```FindAllMarkers()```. It calculates the DE genes in each cluster and we can save the result in a csv file, just like the DESeq2 result.
+
+![DE](DE_result.jpg "Differential Expression Analysis")
+
+
 
 The Seurat toolkit updates fast, so some methods with similar functions (i.e. ```FindMarkers``` and ```FindAllMarkers```) have been used in different time periods. Make sure to consult the current [Seurat reference page](https://satijalab.org/seurat/reference/index.html) for advice!
 
