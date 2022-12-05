@@ -39,11 +39,13 @@ The count matrix is a multidimensional data set, which is very hard to explore t
 
 ![intro_dr](SC_umap.png "A UMAP Plot of single-cell Clusters")
 
+This is a example result of dimension reduction. By using Seurat, we can visualize the count matrix using two most significant dimensions, and achieve clusters automatically. After this, we can find marker genes for each cluster and determine what they represent. As in UMAP plots, the general structure and distances between clusters also contains information, we are able to generate rich analysis results using Dimension Reduction.
+
 ```
 Dev_NPC <- RunPCA(Dev_NPC, features = VariableFeatures(object = Dev_NPC), verbose = FALSE, npcs = 100) 
 ```
 
-Then, we perform dimension reduction, which is PCA. With PCA we find independent and separated features and prepare for clustering. Seurat clustering uses FindNeighbors and Find Clusters methods with an SNN algorithm and Louvain method. The clusters are automatically generated.
+The key step of dimension reduction is PCA -- Principal Component Analysis. With PCA we find independent and separated features and prepare for clustering. Seurat clustering uses FindNeighbors and Find Clusters methods with an SNN algorithm and Louvain method. The clusters are automatically generated.
 To visualize dimension reduction and clusters, we have tSNE or UMAP. They both reduce higher dimensional data to two dimensions and then we plot clusters with the data.
 (NEXT PAGE)
 Another section is differential expression. To find DE genes, we have a convenient method: Find all markers. It calculates the DE genes in each cluster and creates a sheet like the DESeq2 result.
