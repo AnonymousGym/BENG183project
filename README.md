@@ -21,7 +21,6 @@ The beads and barcodes is critical for researchers to know the origin of differe
 ### Seurat
 After the quality check, we first preprocess the data, then perform differential expression analysis and dimension reduction. 
 ```
-Dev_NPC[["percent.mt"]] <- PercentageFeatureSet(Dev_NPC, pattern = "^mt-")
 Dev_NPC <- NormalizeData(object = Dev_NPC, normalization.method = "LogNormalize", scale.factor = 10000)
 Dev_NPC <- FindVariableFeatures(Dev_NPC, selection.method = "vst", nfeatures = 2000)
 Dev_NPC <- ScaleData(Dev_NPC, vars.to.regress = c("nCount_RNA","percent.mt"), features = row.names(Dev_NPC))
@@ -29,7 +28,13 @@ Dev_NPC <- RunPCA(Dev_NPC, features = VariableFeatures(object = Dev_NPC), verbos
 ```
 This is the preprocessing R code. ```Dev_NPC``` is a Seurat object.
 
-For preprocessing, The input count matrix has large variations between rows and columns so we use log normalization. Then, we use Find Variable Features to find the 2000 best genes for next steps. The better genes have larger variability in the count matrix, so we have better PCA results. By scaling data, we perform feature-level scaling. Each feature will have a mean of 0 and scaled by its standard deviation.  
+```
+Dev_NPC <- NormalizeData(object = Dev_NPC, normalization.method = "LogNormalize", scale.factor = 10000)
+```
+For preprocessing, The input count matrix has large variations between rows and columns. To level the inputs, we use log normalization. 
+
+
+Then, we use Find Variable Features to find the 2000 best genes for next steps. The better genes have larger variability in the count matrix, so we have better PCA results. By scaling data, we perform feature-level scaling. Each feature will have a mean of 0 and scaled by its standard deviation.  
 (NEXT PAGE)
 Then, we perform dimension reduction, which is PCA. With PCA we find independent and separated features and prepare for clustering. Seurat clustering uses FindNeighbors and Find Clusters methods with an SNN algorithm and Louvain method. The clusters are automatically generated.
 To visualize dimension reduction and clusters, we have tSNE or UMAP. They both reduce higher dimensional data to two dimensions and then we plot clusters with the data.
@@ -40,4 +45,7 @@ After these, we can use various plots to visualize the analysis.
 We use dimplot to draw the clusters we generated and FeaturePlot to use markers to identify each cluster.
 We also have like violin plots to draw the changes of expression with time. RidgePlot is an alternative.
 (Next Page)
+
+The Seurat toolkit updates fast, so some methods with similar functions (i.e. ``FindMarkers``` and ```FindAllMarkers```) have been used in different time periods. Make sure to consult the current [Seurat reference page](https://satijalab.org/seurat/reference/index.html) for advice!
+
 In conclusion, single-cell sequencing provides differentially expressed genes and classify functions with different clusters of cells.
