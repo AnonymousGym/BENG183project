@@ -63,7 +63,9 @@ To visualize the dimension reduction result and clusters, we mainly have two met
 
 ![tSNE_time](tSNE_time.jpg "The same tSNE Plot with respect to timeline")
 
-This is a example of visualizing tSNE-based clusters. We can see this plot with different clusters on it 
+This is a example of visualizing tSNE-based clusters. We can see this plot with first, clusters based on identities and second, clusters based on timeline. When we compare the two plots, we can understand how the different clusters of cells change with respect to time.
+
+![dimplot](Suclg2_dimplot.jpg "Dimplot of marker gene among previous clusters")
 
 Another section is differential expression. To find DE genes, we have a convenient method: Find all markers. It calculates the DE genes in each cluster and creates a sheet like the DESeq2 result.
 (NEXT PAGE)
