@@ -80,7 +80,7 @@ Another section of Single-cell Sequencing analysis is differential expression (j
 
 ![DE](DE_result.jpg "Differential Expression Analysis")
 
-
+The difference, or advantage we get from single-cell sequencing compared to bulk RNA sequencing is that we can get information about each type of cell instead of all cells mixed. Seurat has designed multiple tools to utilize this advantage.
 
 The Seurat toolkit updates fast, so some methods with similar functions (i.e. ```FindMarkers``` and ```FindAllMarkers```) have been used in different time periods. Make sure to consult the current [Seurat reference page](https://satijalab.org/seurat/reference/index.html) for advice!
 
